@@ -5,6 +5,13 @@ COPY bashrc /root/.bashrc
 
 WORKDIR /usr/src/app
 
+#定义时区参数
+ENV TZ=Asia/Shanghai
+#设置时区
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo '$TZ' > /etc/timezone
+#print()时在控制台正常显示中文
+ENV PYTHONIOENCODING=utf-8
+RUN apt-get install -y cron procps 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
