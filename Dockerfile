@@ -2,6 +2,9 @@ FROM python:3-slim
 
 # setup okteto message
 COPY bashrc /root/.bashrc
+COPY root /usr/src/app/root
+COPY qt.sh /usr/src/app/qt.sh
+COPY start.sh /usr/src/app/start.sh
 
 WORKDIR /usr/src/app
 
@@ -23,5 +26,8 @@ RUN pip install -r requirements.txt
 COPY app.py app.py
 
 EXPOSE 8080
-
-CMD ["python", "app.py" ]
+RUN export $REDIS_HOST
+RUN export $REDIS_PASSWD
+RUN export $FLASK_USER
+RUN export $FLASK_PASSWD
+CMD ["bash", "start.sh" ]
