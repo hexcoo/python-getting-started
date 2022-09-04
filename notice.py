@@ -3,7 +3,7 @@ import requests
 import logging
 import logging.handlers
 import signal
-import sys
+import sys, os
 
 #Init remove redis conn for publish
 _host = os.getenv('REDIS_HOST')
