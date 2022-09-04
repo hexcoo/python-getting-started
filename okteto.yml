@@ -4,7 +4,7 @@ build:
     image: okteto.dev/python-hello-world:1.0.0
     context: .
 deploy:
-  - envsubst
+  - envsubst < k8s.yml
   - kubectl apply -f config.yml
 dev:
   hello-world:
