@@ -22,7 +22,9 @@ spec:
         - name: FLASK_USER
           value:   ${FLASK_USER}
         - name: FLASK_PASSWD
-          value:   ${FLASK_PASSWD} 
+          value:   ${FLASK_PASSWD}
+        - name: SLACK_HOOK
+          value: ${SLACK_HOOK}
 ---
 
 apiVersion: v1
