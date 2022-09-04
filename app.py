@@ -9,6 +9,7 @@ import requests
 import redis
 import json
 import re
+import subprocess
 
 file_path = '/usr/src/app/test'
 #Init remove redis conn for publish
@@ -44,6 +45,27 @@ def check_run():
     else:
         return 'check cron'
 
+@app.route('/start', methods=['GET'])
+@basiccauth.required
+def start():
+    import subprocess
+    new_env = os.environ.copy()
+    cmd_str = '/usr/local/bin/python /usr/src/app/notice.py &'
+    chk_str = "ps -ef|grep notic|grep -v grep|awk '{print $2}'"
+    pid = "no"
+    subprocess.Popen(cmd_str, env=new_env)
+    pid = os.popen(chk_str)
+    print(pid)
+
+@app.route('/stop', methods=['GET'])
+@basiccauth.required
+def stop():
+    chk_str = "ps -ef|grep notic|grep -v grep|awk '{print $2}'"
+    pid = "11111"
+    pid = os.popen(chk_str)
+    cmd_str = 'kill -9 ' + pid
+    os.system(cmd_str)
+    
 @app.route('/check_mail', methods=['GET'])
 @basiccauth.required
 def check_mail():
