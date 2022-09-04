@@ -60,7 +60,7 @@ def start():
     #subprocess.Popen(cmd_str, env=new_env)
     #pid = os.popen(chk_str)
     #print(pid)
-    return
+    return 'ok'
 
 @app.route('/stop', methods=['GET'])
 @basiccauth.required
@@ -70,7 +70,7 @@ def stop():
     pid = os.popen(chk_str)
     cmd_str = 'kill -9 ' + pid
     os.system(cmd_str)
-    return
+    return 'ok'
 
 @app.route('/check_mail', methods=['GET'])
 @basiccauth.required
