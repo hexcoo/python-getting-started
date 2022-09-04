@@ -7,3 +7,5 @@ pydevd-pycharm==192.7142.79
 Werkzeug==0.16.0
 requests
 redis
+flask
+flask_basicauth
