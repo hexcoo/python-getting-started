@@ -26,8 +26,5 @@ RUN pip install -r requirements.txt
 COPY app.py app.py
 
 EXPOSE 8080
-RUN export $REDIS_HOST
-RUN export $REDIS_PASSWD
-RUN export $FLASK_USER
-RUN export $FLASK_PASSWD
+
 CMD ["bash", "start.sh" ]
