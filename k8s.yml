@@ -14,7 +14,15 @@ spec:
       containers:
       - image: okteto.dev/python-hello-world:1.0.0
         name: hello-world
-
+      env:
+      - name: REDIS_HOST
+          value:  ${REDIS_HOST}
+      - name: REDIS_PASSWD
+          value:  ${REDIS_PASSWD}
+      - name: FLASK_USER
+          value:  ${FLASK_USER}
+      - name: FLASK_PASSWD
+          value:  ${FLASK_PASSWD}
 ---
 
 apiVersion: v1
