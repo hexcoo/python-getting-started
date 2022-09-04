@@ -19,6 +19,9 @@ _tghost = 'api.telegram.org'
 _tgbot_token = '2038956431:AAGIpP3DSy3q1EM58lDlHwvcgSzbcZMu7fw'
 _tg_chat_id = '-1001710535265'
 
+_slack_host = os.getenv('SLACK_HOOK')
+_slack_channel = "#notice_cube"
+
 # Telegram Bot Push https://core.telegram.org/bots/api#authorizing-your-bot
 def telegram(msg):
     data = (
@@ -31,6 +34,21 @@ def telegram(msg):
         print('Telegram Bot 推送失败')
     else:
         print('Telegram Bot success')
+
+def slack_send(channel, msg):
+    data = {
+        "channel": channel,
+        "username":"okteto-test",
+        "text": msg + "\n\n" ,
+        "icon_emoji": ":moneybag:"
+    }
+    print(_slack_host)
+    response = requests.post(_slack_host, json=data)
+    if response.status_code != 200:
+        print(response.text)
+        print('Slack failure')
+    else:
+        print('Slack  success')
 
 def set_logger():
     logger.setLevel(logging.INFO)
@@ -67,6 +85,7 @@ try:
     for msg in sub.listen():
         if msg is not None and isinstance(msg, dict) and msg["type"]=="message":
             telegram(msg["data"])
+            slack_send(_slack_channel, msg["data"])
             logger.info(msg["data"])
 except Exception as e:
     import traceback
