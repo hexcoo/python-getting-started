@@ -25,6 +25,8 @@ spec:
           value:   ${FLASK_PASSWD}
         - name: SLACK_HOOK
           value: ${SLACK_HOOK}
+        - name: TG_TOKEN
+          value: ${TG_TOKEN}
 ---
 
 apiVersion: v1
