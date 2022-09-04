@@ -25,7 +25,8 @@ app = Flask(__name__)
 app.config['BASIC_AUTH_USERNAME'] = os.getenv('FLASK_USER')
 app.config['BASIC_AUTH_PASSWORD'] = os.getenv('FLASK_PASSWD')
 
-
+print("user: " + os.getenv('FLASK_USER'))
+print("passwd: " + os.getenv('FLASK_PASSWD'))
 basiccauth = BasicAuth(app)
 @app.route('/')
 def hello_world():
