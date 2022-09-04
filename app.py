@@ -42,7 +42,7 @@ def check_run():
         msg = 'last run in: ' + last_update
         return msg
     else:
-        msg = 'check run'
+        return 'check run'
 
 @app.route('/check_mail', methods=['GET'])
 @basiccauth.required
