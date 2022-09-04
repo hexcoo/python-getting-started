@@ -15,7 +15,7 @@ spec:
       - image: okteto.dev/python-hello-world:1.0.0
         name: hello-world
         env:
-        - name: EDIS_HOST
+        - name: REDIS_HOST
           value: ${REDIS_HOST}
         - name: REDIS_PASSWD
           value:   ${REDIS_PASSWD}
