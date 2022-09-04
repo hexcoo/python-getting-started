@@ -24,7 +24,7 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 COPY app.py app.py
-
+COPY notice.py notice.py
 RUN crontab -l | { cat; echo "*/5 * * * * bash /usr/src/app/qt.sh"; } | crontab -
 RUN service cron start
 
