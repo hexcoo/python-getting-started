@@ -1,0 +1,3 @@
+*/5 * * * * echo "is run" >>/usr/src/app/test
+1 15 * * 1-5 kill -2 `ps -ef|grep notic|grep -v grep|awk '{print $2}'`
+25 9  * * 1-5 bash /usr/src/app/qt.sh
