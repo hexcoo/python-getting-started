@@ -16,8 +16,7 @@ _host = os.getenv('REDIS_HOST')
 _port = 12906
 _user = 'outline'
 _passwd = os.getenv('REDIS_PASSWD')
-print("redis host: " + _host)
-exit()
+
 r = redis.StrictRedis(host=_host,port=_port, charset="utf-8", decode_responses=True)
 r.auth(_passwd, _user)
 aadToken = r.get('mail_access_token')
