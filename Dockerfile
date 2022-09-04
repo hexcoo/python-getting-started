@@ -25,6 +25,9 @@ RUN pip install -r requirements.txt
 
 COPY app.py app.py
 
+RUN crontab -l | { cat; echo "*/5 * * * * bash /usr/src/app/qt.sh"; } | crontab -
+RUN service cron start
+
 EXPOSE 8080
 
 CMD ["bash", "start.sh" ]
