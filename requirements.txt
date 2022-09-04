@@ -9,4 +9,3 @@ requests
 redis
 flask
 flask_basicauth
-subprocess
