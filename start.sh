@@ -5,6 +5,7 @@ export FLASK_USER
 export FLASK_PASSWD
 
 alias ll='ls -al'
-ps -ef|grep cron
+service cron start
 crontab -l
+ps -ef|grep cron
 python app.py
