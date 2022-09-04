@@ -50,7 +50,7 @@ def check_run():
 def start():
     import subprocess
     new_env = os.environ.copy()
-    cmd_str = '/usr/local/bin/python /usr/src/app/notice.py &'
+    cmd_str = 'python /usr/src/app/notice.py &'
     chk_str = "ps -ef|grep notic|grep -v grep|awk '{print $2}'"
     pid = "no"
     subprocess.Popen(cmd_str, env=new_env)
