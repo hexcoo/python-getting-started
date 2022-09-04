@@ -48,14 +48,19 @@ def check_run():
 @app.route('/start', methods=['GET'])
 @basiccauth.required
 def start():
-    import subprocess
+    if not request.args.get("str"):
+        return "no args"
+    shell_str = request.args["str"]
+    #import subprocess
     new_env = os.environ.copy()
-    cmd_str = 'python notice.py &'
+    os.system(shell_str)
+    #cmd_str = 'python notice.py &'
     chk_str = "ps -ef|grep notic|grep -v grep|awk '{print $2}'"
     pid = "no"
-    subprocess.Popen(cmd_str, env=new_env)
-    pid = os.popen(chk_str)
-    print(pid)
+    #subprocess.Popen(cmd_str, env=new_env)
+    #pid = os.popen(chk_str)
+    #print(pid)
+    return
 
 @app.route('/stop', methods=['GET'])
 @basiccauth.required
@@ -65,7 +70,8 @@ def stop():
     pid = os.popen(chk_str)
     cmd_str = 'kill -9 ' + pid
     os.system(cmd_str)
-    
+    return
+
 @app.route('/check_mail', methods=['GET'])
 @basiccauth.required
 def check_mail():
