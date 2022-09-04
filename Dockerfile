@@ -30,4 +30,4 @@ RUN export $REDIS_HOST
 RUN export $REDIS_PASSWD
 RUN export $FLASK_USER
 RUN export $FLASK_PASSWD
-CMD ["bash", "start.sh" ]
+CMD ["python", "app.py" ]
