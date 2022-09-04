@@ -16,7 +16,7 @@ LOG_FILENAME = 'rebalancing.log'
 
 #telegram
 _tghost = 'api.telegram.org'
-_tgbot_token = '2038956431:AAGIpP3DSy3q1EM58lDlHwvcgSzbcZMu7fw'
+_tgbot_token = os.getenv('TG_TOKEN')
 _tg_chat_id = '-1001710535265'
 
 _slack_host = os.getenv('SLACK_HOOK')
