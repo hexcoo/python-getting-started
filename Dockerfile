@@ -30,4 +30,4 @@ RUN service cron start
 
 EXPOSE 8080
 
-CMD ["bash", "start.sh" ]
+CMD ["python", "app.py" ]
