@@ -44,7 +44,7 @@ def check_run():
         return msg
     else:
         return 'check cron'
-
+"""
 @app.route('/start', methods=['GET'])
 @basiccauth.required
 def start():
@@ -71,7 +71,7 @@ def stop():
     cmd_str = 'kill -9 ' + pid
     os.system(cmd_str)
     return 'ok'
-
+"""
 @app.route('/check_mail', methods=['GET'])
 @basiccauth.required
 def check_mail():
