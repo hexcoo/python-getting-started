@@ -17,9 +17,12 @@ _host = os.getenv('REDIS_HOST')
 _port = 12906
 _user = 'outside'
 _passwd = os.getenv('REDIS_PASSWD')
-
-r = redis.StrictRedis(host=_host,port=_port, charset="utf-8", decode_responses=True)
-r.auth(_passwd, _user)
+#old auth
+#r = redis.StrictRedis(host=_host,port=_port, charset="utf-8", decode_responses=True)
+#r.auth(_passwd, _user)
+#new auth
+redis_uri = "rediss://" + _user + ":" + _passwd + "@" + _host + ":" + _port
+r = redis.from_url(redis_uri)
 aadToken = r.get('mail_access_token')
 
 app = Flask(__name__)
