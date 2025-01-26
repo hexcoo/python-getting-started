@@ -15,7 +15,7 @@ file_path = '/usr/src/app/test'
 #Init remove redis conn for publish
 _host = os.getenv('REDIS_HOST')
 _port = 12906
-_user = 'outline'
+_user = 'outside'
 _passwd = os.getenv('REDIS_PASSWD')
 
 r = redis.StrictRedis(host=_host,port=_port, charset="utf-8", decode_responses=True)
