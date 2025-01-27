@@ -18,11 +18,11 @@ _port = 12906
 _user = 'outside'
 _passwd = os.getenv('REDIS_PASSWD')
 #old auth
-#r = redis.StrictRedis(host=_host,port=_port, charset="utf-8", decode_responses=True)
+r = redis.StrictRedis(host=_host,port=_port, charset="utf-8", decode_responses=True)
 #r.auth(_passwd, _user)
 #new auth
-redis_uri = "redis://" + _user + ":" + _passwd + "@" + _host + ":12906"
-r = redis.from_url(redis_uri)
+#redis_uri = "redis://" + _user + ":" + _passwd + "@" + _host + ":12906"
+#r = redis.from_url(redis_uri)
 r.execute_command("AUTH " + _user +" " + _passwd)
 aadToken = r.get('mail_access_token')
 
