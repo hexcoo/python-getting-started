@@ -17,9 +17,7 @@ _host = os.getenv('REDIS_HOST')
 _port = 12906
 _user = 'outside'
 _passwd = os.getenv('REDIS_PASSWD')
-#old auth
-#r = redis.StrictRedis(host=_host,port=_port, charset="utf-8", decode_responses=True)
-#r.auth(_passwd, _user)
+
 #new auth
 redis_uri = "redis://" + _user + ":" + _passwd + "@" + _host + ":12906"
 r = redis.from_url(redis_uri)
@@ -109,6 +107,7 @@ def check_mail():
     if res.status_code != 200:
         #update token
         aadToken = r.get('mail_access_token')
+        str_aadToken = aadToken.decode('utf-8')
         return "retry, get outlook mail error code: "  +  resp["error"]["code"]
 
     result = resp["value"]
